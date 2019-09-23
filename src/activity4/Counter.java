@@ -26,7 +26,7 @@ public class Counter implements Monitorable<Integer> {
 
 	@Override
 	public boolean exhausted() {
-		return counter <= sleepUntil ;
+		return counter < sleepUntil ;
 	}
 
 	@Override

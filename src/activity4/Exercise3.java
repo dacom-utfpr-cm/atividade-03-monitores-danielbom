@@ -20,35 +20,35 @@ public class Exercise3 {
 		Runnable incrementer = () -> {
 			String name = Thread.currentThread().getName();
 			Random random = new Random();
+			int i = 0;
 			while (true) {
 				try {
-					Thread.sleep(random.nextInt(1000) + 500);
-					for (int i = 1; Math.random() > 0.5; i++) {
-						System.out.println(name + ": " + i);
+//					Thread.sleep(random.nextInt(1000) + 500);
+					for (i = 1; Math.random() > 0.5; i++) {
 						Thread.sleep(random.nextInt(1000) + 500);
 					}
 				} catch (InterruptedException e) {
 					// ...
 				}
 				Integer value = monitor.produce(null);
-				System.out.println(name + ": Increment to " + value);
+				System.out.println(name + ": Increment to " + value + " " + i);
 			}
 		};
 		
 		Runnable decrementer = () -> {
 			String name = Thread.currentThread().getName();
 			Random random = new Random();
+			int i = 0;
 			while (true) {
 				try {
-					for (int i = 0; Math.random() > 0.5; i++) {
-						System.out.println(name + ": " + i);
+					for (i = 0; Math.random() > 0.5; i++) {
 						Thread.sleep(random.nextInt(1000) + 500);
 					}
 				} catch (InterruptedException e) {
 					// ...
 				}
 				Integer value = monitor.consume();
-				System.out.println(Thread.currentThread().getName() + ": Decrement to " + value);
+				System.out.println(name + ": Decrement to " + value + " " + i);
 			}
 		};
 		
